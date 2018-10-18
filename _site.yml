@@ -11,4 +11,5 @@ navbar:
       href: http://github.com/tatinimalsarkar/
 output:
   html_document:
-  theme: sketchy
+  theme: flatly
+  css: style.css
