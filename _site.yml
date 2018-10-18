@@ -11,5 +11,5 @@ navbar:
       href: http://github.com/tatinimalsarkar/
 output:
   html_document:
-  theme: cerulean
+  theme: cyborg
   css: style.css
