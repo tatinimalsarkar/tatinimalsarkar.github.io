@@ -1,0 +1,17 @@
+---
+title: "Holy cow!"
+---
+
+### I have a webpage!
+
+And I can put all kinds of stuff on it!
+
+WHOA!!!
+
+#add some cool fricken links!!!!!
+I like [snack](http://foodporndaily.com)
+
+I can link directly to my [about page](about.html)
+
+WOW AND HERE'S A PICTURE TOO!!!!! 
+<img src="images/cool.jpg" style="width:75%">
