@@ -1,11 +1,48 @@
 ---
-title: "About"
+title: "Academic and Professional Experience"
 ---
 
-### About this site
+Thanks for taking a look at my page! Here's what I've been up to.
 
-DAMMMMMMMMM HEYYYYY!!!!
+### Academic Experience
 
-Sometimes you need to say a bit about the site -- how it was made, where it's hosted, where the source code can be found. 
+* Columbia University, **Mailman School of Public Health**
 
-If this is for a project or analysis, I recommend giving some details about the R package versions that you used to create the content. 
+    *Epidemiology*, New York, NY, 2017-2019
+  
+* Columbia University, **Columbia College**
+
+    *Sociology, Psychology*, New York, NY, 2013-2017
+  
+* **Hathaway Brown School**
+
+    Shaker Heights, OH, 2007-2013
+
+
+
+### Professional Experience
+
+* Columbia University, **Mailman School of Public Health**
+
+    Teaching Assistant (Quantitative Research Methods)
+
+    Research Assistant (Psychiatric Epidemiology)
+
+    Vice President of External Affairs (Emerging Women's Leadership)
+
+
+* **American Institute for Cognitive Therapy**
+
+    Clinical Research Assistant
+
+* Columbia University, **Columbia College**
+
+    Rabi Scholar
+    
+    Research Assistant (Social Psychology)
+
+    Features Editor, Daily Editor (Bwog)
+
+    Radio Show Host (WBAR)
+
+    Research Assistant (Biology)
