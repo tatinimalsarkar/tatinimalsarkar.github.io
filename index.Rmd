@@ -1,28 +1,17 @@
 ---
-title: "Holy cow!"
+title: "Tatini Mal-Sarkar"
 ---
 
-### I have a webpage!
+### Welcome to my website!
 
-And I can put all kinds of stuff on it!
+My name is Tatini Mal-Sarkar, and I'm a second-year MPH student at the Mailman School of Public Health. 
 
-WHOA!!!
+Here's a picture of me as a kid!
 
-#add some cool fricken links!!!!!
-I like [snack](http://foodporndaily.com)
 
-I can link directly to my [about page](about.html)
+<img src="images/tatini.jpg" style="width:30%">
 
-WOW AND HERE'S A PICTURE TOO!!!!! 
-<img src="images/cool.jpg" style="width:75%">
+### Want to learn more about me?
 
-### now we addin code i guess
-```{r}
-library(tidyverse)
-
-tibble(
-  x = 1:10,
-  y = x + 1
-)
-```
+Take a look at my [academic and professional experience](about.html)!
 
