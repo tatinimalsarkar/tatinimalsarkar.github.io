@@ -8,7 +8,7 @@ output:
 
 I like to eat! Let's investigate some restaurants in the Big Apple.
 
-Chart A shows NYC Department of Health scores for Korean restaurants in Manhattan by year of inspection. Chart B depicts American restaurants in NYC, separated by borough. Chart C shows DOH scores for Chinese restaurants by borough.
+Chart A depicts American restaurants in NYC, separated by borough. Chart B shows NYC Department of Health scores for Korean restaurants in Manhattan by year of inspection. Chart C shows DOH scores for Chinese restaurants by borough.
 
 Whew! All those charts are making me hungry. Time for a snack!
 
@@ -27,17 +27,12 @@ Column {data-width = 650}
 ```{r plot_a}
 nyrest_a = read_csv("./data/DOHMH_New_York_City_Restaurant_Inspection_Results.csv.gz") %>% 
   janitor::clean_names() %>% 
-  filter(!is.na(grade),
-         boro == "MANHATTAN",
-         cuisine_description == "Korean") 
+  filter(cuisine_description == "American")
 
 nyrest_a %>% 
-  mutate(text_label = str_c("Type of warning: ", critical_flag, "\nScore: ", score),
-         year = lubridate::year(inspection_date)) %>% 
-  plot_ly(x = ~year, y = ~score, type = "scatter", mode = "markers",
-          alpha = 0.5,
-          color = ~critical_flag,
-          text = ~text_label)
+  count(boro) %>% 
+  mutate(boro = fct_reorder(boro, n)) %>% 
+  plot_ly(x = ~boro, y = ~n, color = ~boro, type = "bar")
 ```
 
 
@@ -49,12 +44,17 @@ Column {data-width=350}
 ```{r plot_b}
 nyrest_b = read_csv("./data/DOHMH_New_York_City_Restaurant_Inspection_Results.csv.gz") %>% 
   janitor::clean_names() %>% 
-  filter(cuisine_description == "American")
+  filter(!is.na(grade),
+         boro == "MANHATTAN",
+         cuisine_description == "Korean") 
 
 nyrest_b %>% 
-  count(boro) %>% 
-  mutate(boro = fct_reorder(boro, n)) %>% 
-  plot_ly(x = ~boro, y = ~n, color = ~boro, type = "bar")
+  mutate(text_label = str_c("Type of warning: ", critical_flag, "\nScore: ", score),
+         year = lubridate::year(inspection_date)) %>% 
+  plot_ly(x = ~year, y = ~score, type = "scatter", mode = "markers",
+          alpha = 0.5,
+          color = ~critical_flag,
+          text = ~text_label)
 ```
 
 ### Chart C
