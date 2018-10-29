@@ -5,6 +5,8 @@ navbar:
   right:
     - text: "About"
       href: about.html
+    - text: "Plots"
+      href: plotly.html
     - text: "LinkedIn"
       href: https://linkedin.com/in/tatini-mal-sarkar/
     - icon: fa-envelope fa-lg

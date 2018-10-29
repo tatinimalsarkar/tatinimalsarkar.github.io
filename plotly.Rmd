@@ -1,69 +1,71 @@
 ---
-title: "plotly"
+title: "Some plots about NYC restaurants"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
-This page shows some example plotly plots.
+I like to eat! Let's investigate some restaurants in the Big Apple.
 
-```{r }
+Chart A shows NYC Department of Health scores for Korean restaurants in Manhattan by year of inspection. Chart B depicts American restaurants in NYC, separated by borough. Chart C shows DOH scores for Chinese restaurants by borough.
+
+Whew! All those charts are making me hungry. Time for a snack!
+
+```{r, include = FALSE}
 library(tidyverse)
 library(viridis)
 library(p8105.datasets)
 library(plotly)
+library(flexdashboard)
 ```
 
-```{r}
-set.seed(1)
+Column {data-width = 650}
+-----------------------------------------------------------------------
 
-data(nyc_airbnb)
-nyc_airbnb = 
-  nyc_airbnb %>% 
-  mutate(rating = review_scores_location / 2) %>%
-  select(boro = neighbourhood_group, neighbourhood, rating, price, room_type,
-         latitude, longitude) %>%
-  filter(!is.na(rating), 
-         boro == "Manhattan",
-         room_type == "Entire home/apt",
-         price %in% 100:500)  %>% 
-  sample_n(5000)
-```
+### Chart A
+```{r plot_a}
+nyrest_a = read_csv("./data/DOHMH_New_York_City_Restaurant_Inspection_Results.csv.gz") %>% 
+  janitor::clean_names() %>% 
+  filter(!is.na(grade),
+         boro == "MANHATTAN",
+         cuisine_description == "Korean") 
 
-### Plotly scatter
-
-```{r}
-nyc_airbnb %>%
-  mutate(text_label = str_c("Price: $", price, '\nRating: ', rating)) %>% 
-  plot_ly(x = ~longitude, y = ~latitude, type = "scatter", mode = "markers",
-          alpha = 0.5, 
-          color = ~price,
+nyrest_a %>% 
+  mutate(text_label = str_c("Type of warning: ", critical_flag, "\nScore: ", score),
+         year = lubridate::year(inspection_date)) %>% 
+  plot_ly(x = ~year, y = ~score, type = "scatter", mode = "markers",
+          alpha = 0.5,
+          color = ~critical_flag,
           text = ~text_label)
 ```
 
-### Plotly boxplot
 
-```{r}
-common_neighborhoods =
-  nyc_airbnb %>% 
-  count(neighbourhood, sort = TRUE) %>% 
-  top_n(8) %>% 
-  select(neighbourhood)
-## Selecting by n
+Column {data-width=350}
+-----------------------------------------------------------------------
 
-inner_join(nyc_airbnb, common_neighborhoods,
-             by = "neighbourhood") %>% 
-  mutate(neighbourhood = fct_reorder(neighbourhood, price)) %>% 
-  plot_ly(y = ~price, color = ~neighbourhood, type = "box",
-          colors = "Set2")
+### Chart B
+
+```{r plot_b}
+nyrest_b = read_csv("./data/DOHMH_New_York_City_Restaurant_Inspection_Results.csv.gz") %>% 
+  janitor::clean_names() %>% 
+  filter(cuisine_description == "American")
+
+nyrest_b %>% 
+  count(boro) %>% 
+  mutate(boro = fct_reorder(boro, n)) %>% 
+  plot_ly(x = ~boro, y = ~n, color = ~boro, type = "bar")
 ```
 
-```{r}
-scatter_ggplot = 
-  nyc_airbnb %>%
-  ggplot(aes(x = longitude, y = latitude, color = price)) +
-  geom_point(alpha = 0.25) +
-  scale_color_viridis() +
-  coord_cartesian() +
-  theme_classic()
+### Chart C
 
-ggplotly(scatter_ggplot)
+```{r plot_c}
+nyrest_c = read_csv("./data/DOHMH_New_York_City_Restaurant_Inspection_Results.csv.gz") %>% 
+  janitor::clean_names() %>% 
+  filter(cuisine_description == "Chinese")
+
+nyrest_c %>% 
+  mutate(boro = fct_reorder(boro, score)) %>% 
+  plot_ly(y = ~score, color = ~boro, type = "box", colors = "Set2")
 ```
 

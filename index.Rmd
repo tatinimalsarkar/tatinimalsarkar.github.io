@@ -15,3 +15,7 @@ Here's a picture of me as a kid!
 
 Take a look at my [academic and professional experience](about.html)!
 
+
+### Curious about NYC restaurants?
+
+Me too! Let's [learn more about them](plotly.html).
