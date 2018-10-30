@@ -32,7 +32,12 @@ nyrest_a = read_csv("./data/DOHMH_New_York_City_Restaurant_Inspection_Results.cs
 nyrest_a %>% 
   count(boro) %>% 
   mutate(boro = fct_reorder(boro, n)) %>% 
-  plot_ly(x = ~boro, y = ~n, color = ~boro, type = "bar")
+  plot_ly(x = ~boro, y = ~n, color = ~boro, type = "bar") %>% 
+  layout(
+    title = "Bar plot of American restaurants by borough",
+    xaxis = list(title = "Borough"),
+    yaxis = list(title = "Number")
+  )
 ```
 
 
@@ -54,7 +59,12 @@ nyrest_b %>%
   plot_ly(x = ~year, y = ~score, type = "scatter", mode = "markers",
           alpha = 0.5,
           color = ~critical_flag,
-          text = ~text_label)
+          text = ~text_label) %>% 
+  layout(
+    title = "Scatterplot of inspection scores by year",
+    xaxis = list(title = "Year"),
+    yaxis = list(title = "Score")
+  )
 ```
 
 ### Chart C
@@ -66,6 +76,11 @@ nyrest_c = read_csv("./data/DOHMH_New_York_City_Restaurant_Inspection_Results.cs
 
 nyrest_c %>% 
   mutate(boro = fct_reorder(boro, score)) %>% 
-  plot_ly(y = ~score, color = ~boro, type = "box", colors = "Set2")
+  plot_ly(y = ~score, color = ~boro, type = "box", colors = "Set2") %>% 
+  layout(
+    title = "Boxplots of inspection scores by borough",
+    xaxis = list(title = "Borough"),
+    yaxis = list(title = "Score")
+  )
 ```
 
