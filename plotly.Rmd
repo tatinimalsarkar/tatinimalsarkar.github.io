@@ -20,7 +20,7 @@ library(plotly)
 library(flexdashboard)
 ```
 
-Column {data-width = 650}
+Column {data-width = 500}
 -----------------------------------------------------------------------
 
 ### Chart A
@@ -41,7 +41,7 @@ nyrest_a %>%
 ```
 
 
-Column {data-width=350}
+Column {data-width=425}
 -----------------------------------------------------------------------
 
 ### Chart B
