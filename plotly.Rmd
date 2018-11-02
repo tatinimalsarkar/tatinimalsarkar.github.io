@@ -35,10 +35,8 @@ nyrest_a %>%
   plot_ly(x = ~boro, y = ~n, color = ~boro, type = "bar") %>% 
   layout(
     title = "Bar plot of American restaurants by borough",
-    xaxis = list(title = "Borough",
-                 size = 10),
-    yaxis = list(title = "Number",
-                 size = 10)
+    xaxis = list(title = "Borough"),
+    yaxis = list(title = "Number")
   )
 ```
 
