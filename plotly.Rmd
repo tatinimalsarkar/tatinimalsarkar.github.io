@@ -20,7 +20,7 @@ library(plotly)
 library(flexdashboard)
 ```
 
-Column {data-width = 500}
+Column {data-width = 650}
 -----------------------------------------------------------------------
 
 ### Chart A
@@ -35,13 +35,15 @@ nyrest_a %>%
   plot_ly(x = ~boro, y = ~n, color = ~boro, type = "bar") %>% 
   layout(
     title = "Bar plot of American restaurants by borough",
-    xaxis = list(title = "Borough"),
-    yaxis = list(title = "Number")
+    xaxis = list(title = "Borough",
+                 size = 10),
+    yaxis = list(title = "Number",
+                 size = 10)
   )
 ```
 
 
-Column {data-width=425}
+Column {data-width=350}
 -----------------------------------------------------------------------
 
 ### Chart B
